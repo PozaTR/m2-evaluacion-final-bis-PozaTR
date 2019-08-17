@@ -1,1 +1,28 @@
+.pairs__list {
+  $elementWidth: 150px;
+  $elementGap: 40px;
+  margin: 0 auto;
+  display:grid;
+  grid-template-rows: 200px 200px;
+  grid-gap: $elementGap;
+  list-style:none;
 
+  &--layout-4 {
+    width: (2*$elementWidth) + $elementGap;
+    grid-template-columns: $elementWidth $elementWidth;
+  }
+
+  &--layout-6 {
+    width: (3*$elementWidth) + (2*$elementGap);
+    grid-template-columns: $elementWidth $elementWidth $elementWidth;
+  }
+
+  &--layout-8 {
+    width: (4*$elementWidth) + (3*$elementGap);
+    grid-template-columns: $elementWidth $elementWidth $elementWidth $elementWidth;
+  }
+
+  &__element {
+    background-image: url('https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB');
+  }
+}
