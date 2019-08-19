@@ -3,11 +3,23 @@
 const urlDefaultImage = `url("https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB")`;
 const choiceForm = document.querySelector('.js__pairs__choice');
 const pokemonList = document.querySelector('.js__pairs__list');
+const radioNumbers = document.querySelectorAll('.js__pairs__choice [name="pokemon-choice"]');
+
+const defaultValue = '4';
+
+const numberCards = localStorage.getItem('numberCards')
+  ? localStorage.getItem('numberCards')
+  : defaultValue;
+
+for (const radioNumber of radioNumbers) {
+  radioNumber.checked = radioNumber.value === numberCards;
+}
 
 function pokemonChoice(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
   const valueRadio = formData.get('pokemon-choice');
+  localStorage.setItem('numberCards', valueRadio);
 
   fetch(`https://raw.githubusercontent.com/Adalab/cards-data/master/${valueRadio}.json`)
     .then(response => response.json())
@@ -34,8 +46,6 @@ function pokemonChoice(event) {
 
 function selectPokemon(event) {
   const card = event.currentTarget;
-  console.log(card.style.backgroundImage);
-  console.log(urlDefaultImage);
   card.style.backgroundImage = card.style.backgroundImage === urlDefaultImage
     ? card.dataset['url']
     : urlDefaultImage;
