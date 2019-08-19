@@ -1,5 +1,6 @@
 'use strict';
 
+const urlDefaultImage = `url("https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB")`;
 const choiceForm = document.querySelector('.js__pairs__choice');
 const pokemonList = document.querySelector('.js__pairs__list');
 
@@ -20,6 +21,7 @@ function pokemonChoice(event) {
         const newLi = document.createElement('li');
         newLi.classList.add('js__pairs__list__element');
         newLi.classList.add('pairs__list__element');
+        newLi.style.backgroundImage = urlDefaultImage;
         newLi.dataset['url'] = `url('${pokemon.image}')`;
         newLi.dataset['pair'] = pokemon.pair;
         pokemonList.appendChild(newLi);
@@ -32,7 +34,11 @@ function pokemonChoice(event) {
 
 function selectPokemon(event) {
   const card = event.currentTarget;
-  card.style.backgroundImage = card.dataset['url'];
+  console.log(card.style.backgroundImage);
+  console.log(urlDefaultImage);
+  card.style.backgroundImage = card.style.backgroundImage === urlDefaultImage
+    ? card.dataset['url']
+    : urlDefaultImage;
 }
 
 choiceForm.addEventListener('submit', pokemonChoice);
