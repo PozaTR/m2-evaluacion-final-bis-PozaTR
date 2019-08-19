@@ -31,7 +31,8 @@ function pokemonChoice(event) {
 }
 
 function selectPokemon(event) {
-  console.log('funciono');
+  const card = event.currentTarget;
+  card.style.backgroundImage = card.dataset['url'];
 }
 
 choiceForm.addEventListener('submit', pokemonChoice);
