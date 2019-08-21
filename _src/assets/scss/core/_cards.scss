@@ -26,9 +26,17 @@
 
   &__element {
     border: 2px solid $c-mediumDark;
+    background-color: white;
     border-radius: 8px;
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    &--find {
+      border: 2px solid $c-dark;
+      opacity: 0.7;
+      background-color: $c-mediumLight;
+    }
   }
+
 }

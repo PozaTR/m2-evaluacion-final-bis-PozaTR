@@ -4,6 +4,7 @@ const urlDefaultImage = `url("https://via.placeholder.com/160x195/30d9c4/ffffff/
 const choiceForm = document.querySelector('.js__pairs__choice');
 const pokemonList = document.querySelector('.js__pairs__list');
 const radioNumbers = document.querySelectorAll('.js__pairs__choice [name="pokemon-choice"]');
+let arrCards = [];
 
 const defaultValue = '4';
 
@@ -44,11 +45,34 @@ function pokemonChoice(event) {
     );
 }
 
+function flipCard(cardToFlip) {
+  cardToFlip.style.backgroundImage = cardToFlip.style.backgroundImage === urlDefaultImage
+    ? cardToFlip.dataset['url']
+    : urlDefaultImage;
+}
+
 function selectPokemon(event) {
   const card = event.currentTarget;
-  card.style.backgroundImage = card.style.backgroundImage === urlDefaultImage
-    ? card.dataset['url']
-    : urlDefaultImage;
+  if(card.dataset['find'] !== 'true') {
+    arrCards.push(card);
+    flipCard(card);
+    if(arrCards.length === 2) {
+      if(arrCards[0].dataset['pair'] === arrCards[1].dataset['pair']) {
+        arrCards[0].classList.add('pairs__list__element--find');
+        arrCards[1].classList.add('pairs__list__element--find');
+        arrCards[0].dataset['find'] = true;
+        arrCards[1].dataset['find'] = true;
+        arrCards = [];
+      } else {
+        const removeCard = () => {
+          flipCard(arrCards[0]);
+          flipCard(arrCards[1]);
+          arrCards = [];
+        };
+        setTimeout(removeCard, 2000);
+      }
+    }
+  }
 }
 
 choiceForm.addEventListener('submit', pokemonChoice);
