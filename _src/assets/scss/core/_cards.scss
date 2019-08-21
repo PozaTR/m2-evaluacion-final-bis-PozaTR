@@ -1,10 +1,11 @@
 
 .pairs__list {
+  $elementHeight: 200px;
   $elementWidth: 150px;
   $elementGap: 40px;
   margin: 0 auto;
   display:grid;
-  grid-template-rows: 200px 200px;
+  grid-template-rows: $elementHeight $elementHeight;
   grid-gap: $elementGap;
   list-style:none;
 
@@ -15,13 +16,25 @@
   }
 
   &--layout-6 {
-    width: (3*$elementWidth) + (2*$elementGap);
-    grid-template-columns: $elementWidth $elementWidth $elementWidth;
+    width: (2*$elementWidth) + $elementGap;
+    grid-template-rows: $elementHeight $elementHeight $elementHeight;
+    grid-template-columns: $elementWidth $elementWidth;
+    @media all and (min-width: 780px) {
+      width: (3*$elementWidth) + (2*$elementGap);
+      grid-template-rows: $elementHeight $elementHeight;
+      grid-template-columns: $elementWidth $elementWidth $elementWidth;
+    }
   }
 
   &--layout-8 {
-    width: (4*$elementWidth) + (3*$elementGap);
-    grid-template-columns: $elementWidth $elementWidth $elementWidth $elementWidth;
+    width: (2*$elementWidth) + $elementGap;
+    grid-template-rows: $elementHeight $elementHeight $elementHeight $elementHeight;
+    grid-template-columns: $elementWidth $elementWidth;
+    @media all and (min-width: 780px) {
+      width: (4*$elementWidth) + (3*$elementGap);
+      grid-template-rows: $elementHeight $elementHeight;
+      grid-template-columns: $elementWidth $elementWidth $elementWidth $elementWidth;
+    }
   }
 
   &__element {
