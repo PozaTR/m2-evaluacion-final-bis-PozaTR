@@ -53,15 +53,13 @@ function flipCard(cardToFlip) {
 
 function selectPokemon(event) {
   const card = event.currentTarget;
-  if(card.dataset['find'] !== 'true') {
+  if(!card.classList.contains('pairs__list__element--find')) {
     arrCards.push(card);
     flipCard(card);
     if(arrCards.length === 2) {
       if(arrCards[0].dataset['pair'] === arrCards[1].dataset['pair']) {
         arrCards[0].classList.add('pairs__list__element--find');
         arrCards[1].classList.add('pairs__list__element--find');
-        arrCards[0].dataset['find'] = true;
-        arrCards[1].dataset['find'] = true;
         arrCards = [];
       } else {
         const removeCard = () => {
@@ -69,7 +67,7 @@ function selectPokemon(event) {
           flipCard(arrCards[1]);
           arrCards = [];
         };
-        setTimeout(removeCard, 2000);
+        setTimeout(removeCard, 1000);
       }
     }
   }
