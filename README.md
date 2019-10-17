@@ -1,7 +1,8 @@
 # Ejercicio de evaluación final-bis ‒ Módulo 2
 El ejercicio consiste en desarrollar un juego de cartas de Pokemon donde encontrar la pareja de los diferentes personajes. Existen tres opciones de juego ya que se puede seleccionar si jugar con 4, 6 u 8 cartas en cada una de las partidas.
+Al tratarse de un juego de memoria las cartas se dan la vuelta automáticamente para que el jugador tenga un tiempo limitado de visualización.
 Cuando el jugador encuentra una pareja, dichas cartas cambian de color.
-El ejercicio también tiene una parte de maquetación con HTML y Sass.
+
 
 # Tecnologías:
 
@@ -9,9 +10,8 @@ El ejercicio también tiene una parte de maquetación con HTML y Sass.
 -Bucles
 -Funciones
 -Eventos
--Promesas
--Maquetación usando CSS
--Almacenamiento en local usando LocalStorage
+-CSS-Sass
+-HTML
 -Peticiones al servidor
 
 
